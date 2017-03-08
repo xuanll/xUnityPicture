@@ -25,6 +25,7 @@ public class Fetcher : MonoBehaviour {
 
 			RectTransform rt = image.transform.GetComponent<RectTransform> ();
 			rt.sizeDelta = new Vector2 (texture.width, texture.height);
+			rt.localScale = Vector3.one;
 
 			image.sprite = sprite;
 		}

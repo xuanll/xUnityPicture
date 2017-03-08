@@ -7,7 +7,10 @@ using UnityEngine.UI;
 public class MainManager : MonoBehaviour {
 
 	[SerializeField]
-	private Image image; 
+	private Image image;
+
+	[SerializeField]
+	private Button button;
 
 	void OnEnable(){
 		string smatisan_logo = "http://t.cn/Ri0b37C"; 		//shorten by http://dwz.wailian.work/
@@ -17,8 +20,11 @@ public class MainManager : MonoBehaviour {
 
 		// Fetcher 
 		if (image != null) {
-			if (image.transform.GetComponent<Fetcher> () != null)
+			if (image.transform.GetComponent<Fetcher> () != null) {
 				image.transform.GetComponent<Fetcher> ().LoadPictureToImage (smatisan_cloud, image);
+
+				button.onClick.AddListener (onButtonClick);
+			}
 			else
 				image.gameObject.AddComponent<Fetcher> ().LoadPictureToImage (smatisan_logo, image);
 		} else {
@@ -41,5 +47,10 @@ public class MainManager : MonoBehaviour {
 			// add Fetcher and load picture
 			go.AddComponent<Fetcher>().LoadPictureToImage (yougForYou_logo, image);
 		}
+	}
+
+	void onButtonClick(){
+//		Application.OpenURL ("https://github.com/xuanll");
+		Application.OpenURL ("https://cloud.smartisan.com/#/");
 	}
 }
